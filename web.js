@@ -4,7 +4,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-var sitePath = './callnotes';
+var sitePath = './' + process.argv[2];
 var ct = [];
 ct['.html'] = 'text/html';
 ct['.css'] = 'text/css';
@@ -12,7 +12,7 @@ ct['.js'] = 'application/javascript';
 ct['.json'] = 'application/json';
 
 var server = http.createServer((req, res) => {
-  console.log(req.url);
+  console.log(new Date().toJSON() + ' - ' + req.url);
   var url = req.url;
   var contenttype, code;
   var file = sitePath;
@@ -33,8 +33,8 @@ var server = http.createServer((req, res) => {
 });
 
 function sendResponse(code, contenttype, data, res) {
-  res.writeHead(200, { 'Content-Type': contenttype });
+  res.writeHead(code, { 'Content-Type': contenttype });
   res.end(data);
 }
-server.listen(80, '192.168.2.12');
-console.log('webserver started');
+server.listen(12345, '10.10.0.221');
+console.log('ready to serve');

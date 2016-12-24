@@ -1,5 +1,8 @@
 'use strict';
 
+var port = 12345;
+var ip = '10.10.0.221';
+
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
@@ -36,5 +39,6 @@ function sendResponse(code, contenttype, data, res) {
   res.writeHead(code, { 'Content-Type': contenttype });
   res.end(data);
 }
-server.listen(12345, '10.10.0.221');
+
+server.listen(port, ip);
 console.log('ready to serve');

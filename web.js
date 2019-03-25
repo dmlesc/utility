@@ -1,7 +1,7 @@
 'use strict';
 
 var port = 12345;
-var ip = '10.10.0.221';
+var ip = '0.0.0.0';
 
 const http = require('http');
 const fs = require('fs');
